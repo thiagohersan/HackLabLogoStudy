@@ -1,5 +1,5 @@
 class Cube {
-  private float rx, ry, rz;
+  private PVector rotation;
   private ArrayList<PGraphics> faces;
   private int cubeSize;
 
@@ -15,9 +15,7 @@ class Cube {
   private boolean needsGen;
 
   public Cube(int s_) {
-    rx = random(0, TWO_PI);
-    ry = random(0, TWO_PI);
-    rz = random(0, TWO_PI);
+    rotation = new PVector(random(0, TWO_PI), random(0, TWO_PI), random(0, TWO_PI));
 
     faces = new ArrayList<PGraphics>();
     cubeSize = s_;
@@ -34,14 +32,14 @@ class Cube {
     for (int i=0; i<faces.size(); i++) {
       PGraphics c = faces.get(i);
       c.beginDraw();
-      c.smooth();
       c.background(255, 0);
+      c.smooth();
       c.stroke(colorP[i]);
       c.fill(colorP[i]);
       c.translate(cubeSize, cubeSize, -cubeSize/2);
-      c.rotateX(rx);
-      c.rotateY(ry);
-      c.rotateZ(rz);
+      c.rotateX(rotation.x);
+      c.rotateY(rotation.y);
+      c.rotateZ(rotation.z);
       c.scale(cubeSize/2+cubeSize/4);
       c.beginShape(QUADS);
       if (i==0) {
@@ -87,10 +85,6 @@ class Cube {
   }
 
   public void drawCube() {
-    rx = random(0, TWO_PI);
-    ry = random(0, TWO_PI);
-    rz = random(0, TWO_PI);
-
     this.genCube();
 
     PImage t = createImage(cubeSize*2, cubeSize*2, ARGB);
@@ -104,6 +98,10 @@ class Cube {
       t.blend(faces.get(i), 0, 0, faces.get(i).width, faces.get(i).height, 0, 0, t.width, t.height, MULTIPLY);
     }
     image(t, 10, 10);
+  }
+
+  void setR(PVector pv) {
+    rotation = pv;
   }
 }
 
