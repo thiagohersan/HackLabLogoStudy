@@ -7,6 +7,7 @@ Cube c;
 
 void setup() {
   size(SIZEOFCUBE*2+20, SIZEOFCUBE*2+20, P3D);
+  smooth();
   needsDrawn = true;
   c = new Cube(SIZEOFCUBE);
   background(255);
@@ -15,7 +16,6 @@ void setup() {
 void draw() {
   if (needsDrawn == true) {
     background(255);
-    smooth();
     needsDrawn = false;
     c.drawCube();
   }
@@ -23,9 +23,5 @@ void draw() {
 
 void mouseReleased() {
   needsDrawn = true;
-}
-
-void keyReleased() {
-
 }
 

@@ -3,7 +3,14 @@ class Cube {
   private ArrayList<PGraphics> faces;
   private int cubeSize;
 
-  private color[] colorP;
+  private color[] colorP = {
+    color(255, 237, 000, 166), 
+    color(000, 159, 227, 255), 
+    color(000, 105, 180, 255), 
+    color(230, 000, 126, 255), 
+    color(199, 004, 123, 255), 
+    color(000, 000, 000, 000)
+  };
 
   private boolean needsGen;
 
@@ -16,28 +23,16 @@ class Cube {
     cubeSize = s_;
     needsGen = true;
 
-    colorP = new color[6];
-    /*
-    colorP[0] = color(000, 255, 255, 255);
-     colorP[1] = color(255, 000, 255, 255);
-     colorP[2] = color(255, 255, 000, 255);
-     colorP[3] = color(100, 100, 255, 255);
-     colorP[4] = color(255, 100, 100, 255);
-     colorP[5] = color(000, 000, 000, 000);
-     */
-    colorP[0] = color(255, 237, 000, 166);
-    colorP[1] = color(000, 159, 227, 255);
-    colorP[2] = color(000, 105, 180, 255);
-    colorP[3] = color(230, 000, 126, 255);
-    colorP[4] = color(199, 004, 123, 255);
-    colorP[5] = color(000, 000, 000, 000);
+    for (int i=0; i<5; i++) {
+      PGraphics c = createGraphics(cubeSize*2, cubeSize*2, OPENGL);
+      faces.add(c);
+    }
   }
 
   private void genCube() {
     // draw all 6 faces as flat boxes
-    faces.clear();
-    for (int i=0; i<5; i++) {
-      PGraphics c = createGraphics(cubeSize*2, cubeSize*2, OPENGL);
+    for (int i=0; i<faces.size(); i++) {
+      PGraphics c = faces.get(i);
       c.beginDraw();
       c.smooth();
       c.background(255, 0);
@@ -87,8 +82,6 @@ class Cube {
       }
       c.endShape();
       c.endDraw();
-
-      faces.add(c);
     }
     needsGen = false;
   }
@@ -109,8 +102,8 @@ class Cube {
 
     for (int i=0; i<faces.size(); i++) {
       t.blend(faces.get(i), 0, 0, faces.get(i).width, faces.get(i).height, 0, 0, t.width, t.height, MULTIPLY);
-      image(t, 10, 10);
     }
+    image(t, 10, 10);
   }
 }
 
