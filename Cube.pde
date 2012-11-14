@@ -22,7 +22,7 @@ class Cube {
     needsGen = true;
 
     for (int i=0; i<6; i++) {
-      PGraphics c = createGraphics(cubeSize*2, cubeSize*2, OPENGL);
+      PGraphics c = createGraphics(cubeSize*2, cubeSize*2, P3D);
       faces.add(c);
     }
   }

@@ -1,5 +1,3 @@
-import processing.opengl.*;
-
 Cube c;
 
 void setup() {
