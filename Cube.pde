@@ -4,12 +4,12 @@ class Cube {
   private int cubeSize;
 
   private color[] colorP = {
-    color(000, 000, 000, 000), 
-    color(255, 237, 000, 166), 
-    color(000, 159, 227, 255), 
-    color(000, 105, 180, 255), 
-    color(230, 000, 126, 255), 
-    color(199, 004, 123, 255)
+    color(255, 255, 255,   0),
+    color(255, 237,   0, 255),
+    color(  0, 159, 227, 255),
+    color(  0, 105, 180, 255),
+    color(230,   0, 126, 255),
+    color(199,   4, 123, 255)
   };
 
   public Cube(int s_) {
@@ -28,7 +28,7 @@ class Cube {
     // first graphic is just a white rect
     PGraphics c = faces.get(0);
     c.beginDraw();
-    c.background(255);
+    c.background(255,0);
     c.smooth();
     c.endDraw();
 
