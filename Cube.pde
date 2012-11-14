@@ -101,7 +101,7 @@ class Cube {
   }
 
   void setR(PVector pv) {
-    rotation = pv;
+    rotation.add(pv);
   }
 }
 
