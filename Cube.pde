@@ -12,14 +12,11 @@ class Cube {
     color(199, 004, 123, 255)
   };
 
-  private boolean needsGen;
-
   public Cube(int s_) {
     rotation = new PVector(random(0, TWO_PI), random(0, TWO_PI), random(0, TWO_PI));
 
     faces = new ArrayList<PGraphics>();
     cubeSize = s_;
-    needsGen = true;
 
     for (int i=0; i<6; i++) {
       PGraphics c = createGraphics(cubeSize*2, cubeSize*2, P3D);
@@ -89,12 +86,10 @@ class Cube {
       c.endShape();
       c.endDraw();
     }
-    needsGen = false;
   }
 
   public void drawCube() {
     this.genCube();
-
 
     PImage t = createImage(cubeSize*2, cubeSize*2, ARGB);
     t.copy(faces.get(0), 0, 0, faces.get(0).width, faces.get(0).height, 0, 0, t.width, t.height);
