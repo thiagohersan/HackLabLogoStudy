@@ -1,15 +1,15 @@
 Cube c;
 
 void setup() {
-  size(420, 420, P3D);
+  size(420, 420,P2D);
   smooth();
   c = new Cube(200);
-  background(255);
 }
 
 void draw() {
   background(255);
   c.drawCube();
+  //line(0,0,random(width),random(height));
 }
 
 void mouseDragged() {
